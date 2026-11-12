@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SoilCare - Soil Testing Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">🌱 SoilCare</div>
+
+    <nav>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('login')">Login</button>
+        <button onclick="showPage('register')">Register</button>
+        <button onclick="showPage('adminLogin')">Admin</button>
+    </nav>
+
+</header>
+
+
+<!-- HOME PAGE -->
+
+<section id="home" class="page">
+
+    <div class="hero">
+
+        <h1>Healthy Soil, Healthy Future!</h1>
+
+        <p>
+            Soil testing helps farmers understand soil fertility,
+            improve crop production and make better agricultural decisions.
+        </p>
+
+        <button onclick="showPage('register')">
+            Get Started
+        </button>
+
+        <button onclick="showPage('login')">
+            Farmer Login
+        </button>
+
+    </div>
+
+    <div class="services">
+
+        <h2>Our Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🌾 Soil Testing</h3>
+                <p>Analyze soil nutrients and fertility.</p>
+            </div>
+
+            <div class="card">
+                <h3>📅 Appointment Booking</h3>
+                <p>Book soil testing appointments online.</p>
+            </div>
+
+            <div class="card">
+                <h3>📄 Digital Reports</h3>
+                <p>Download soil test reports.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REGISTER PAGE -->
+
+<section id="register" class="page hidden">
+
+    <div class="box">
+
+        <h2>Farmer Registration</h2>
+
+        <form id="registerForm">
+
+            <input id="name" placeholder="Full Name" required>
+
+            <input id="email" type="email"
+                placeholder="Email Address" required>
+
+            <input id="phone" type="tel"
+                placeholder="Mobile Number"
+                pattern="[0-9]{10}" maxlength="10" required>
+
+            <input id="address"
+                placeholder="Village / Address" required>
+
+            <input id="password" type="password"
+                placeholder="Create Password" minlength="6" required>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <p>Already registered?
+            <a href="#" onclick="showPage('login')">Login</a>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LOGIN PAGE -->
+
+<section id="login" class="page hidden">
+
+    <div class="box">
+
+        <h2>Farmer Login</h2>
+
+        <form id="loginForm">
+
+            <input id="loginEmail" type="email"
+                placeholder="Email Address" required>
+
+            <input id="loginPassword" type="password"
+                placeholder="Password" required>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- FARMER DASHBOARD -->
+
+<section id="dashboard" class="page hidden">
+
+    <h1 class="title">Farmer Dashboard</h1>
+
+    <h2>Welcome, <span id="farmerName"></span>!</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Appointments</h3>
+            <h2 id="totalAppointments">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Pending</h3>
+            <h2 id="pendingAppointments">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Completed</h3>
+            <h2 id="completedAppointments">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Reports</h3>
+            <h2 id="totalReports">0</h2>
+        </div>
+
+    </div>
+
+    <div class="center">
+
+        <button onclick="showPage('appointment')">
+            Book Appointment
+        </button>
+
+        <button onclick="showPage('reports')">
+            My Reports
+        </button>
+
+        <button onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- APPOINTMENT PAGE -->
+
+<section id="appointment" class="page hidden">
+
+    <div class="box">
+
+        <h2>Soil Testing Appointment</h2>
+
+        <form id="appointmentForm">
+
+            <input id="village"
+                placeholder="Village Name" required>
+
+            <input id="land"
+                placeholder="Land Area in Acres" required>
+
+            <select id="soilType" required>
+
+                <option value="">Select Soil Type</option>
+
+                <option>Red Soil</option>
+                <option>Black Soil</option>
+                <option>Alluvial Soil</option>
+                <option>Sandy Soil</option>
+                <option>Clay Soil</option>
+                <option>Other</option>
+
+            </select>
+
+            <input id="crop"
+                placeholder="Crop Name" required>
+
+            <input id="date"
+                type="date" required>
+
+            <textarea id="description"
+                placeholder="Additional Details"></textarea>
+
+            <button type="submit">
+                Book Appointment
+            </button>
+
+        </form>
+
+        <button onclick="showPage('dashboard')">
+            Back to Dashboard
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- REPORT PAGE -->
+
+<section id="reports" class="page hidden">
+
+    <h1 class="title">My Soil Testing Reports</h1>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>Appointment ID</th>
+                    <th>Date</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+
+            <tbody id="reportTable"></tbody>
+
+        </table>
+
+    </div>
+
+    <div class="center">
+
+        <button onclick="showPage('dashboard')">
+            Back to Dashboard
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ADMIN LOGIN -->
+
+<section id="adminLogin" class="page hidden">
+
+    <div class="box">
+
+        <h2>Administrator Login</h2>
+
+        <form id="adminLoginForm">
+
+            <input id="adminEmail"
+                type="email"
+                placeholder="Admin Email"
+                required>
+
+            <input id="adminPassword"
+                type="password"
+                placeholder="Admin Password"
+                required>
+
+            <button type="submit">
+                Admin Login
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ADMIN DASHBOARD -->
+
+<section id="adminDashboard" class="page hidden">
+
+    <h1 class="title">Administrator Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Registered Farmers</h3>
+            <h2 id="adminFarmers">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Appointments</h3>
+            <h2 id="adminAppointments">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Reports</h3>
+            <h2 id="adminReports">0</h2>
+        </div>
+
+    </div>
+
+
+    <h2 class="title">Appointment Management</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Appointment ID</th>
+                    <th>Farmer</th>
+                    <th>Phone</th>
+                    <th>Village</th>
+                    <th>Soil Type</th>
+                    <th>Crop</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="adminAppointmentTable"></tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- UPLOAD REPORT -->
+
+    <div class="box">
+
+        <h2>Upload Soil Testing Report</h2>
+
+        <form id="uploadForm">
+
+            <label>Appointment ID</label>
+
+            <input id="uploadAppointmentId"
+                placeholder="Enter Appointment ID"
+                required>
+
+            <label>Select PDF Report</label>
+
+            <input type="file"
+                id="reportFile"
+                accept=".pdf,application/pdf"
+                required>
+
+            <button type="submit">
+                Upload Report
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="center">
+
+        <button onclick="adminLogout()">
+            Admin Logout
+        </button>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>© 2026 SoilCare Soil Testing Portal</p>
+
+    <p>Empowering Farmers Through Technology 🌱</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

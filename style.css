@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f8f1;
+    color: #333;
+}
+
+header {
+    background: #14532d;
+    color: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+nav button {
+    background: white;
+    color: #14532d;
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button {
+    background: #14532d;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    margin: 8px 3px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #267a42;
+}
+
+.hero {
+    background: linear-gradient(120deg, #14532d, #5b9b50);
+    color: white;
+    text-align: center;
+    padding: 110px 20px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: auto;
+}
+
+.services {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.services h2 {
+    color: #14532d;
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 15px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    width: 230px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000015;
+}
+
+.card h3 {
+    color: #14532d;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    color: #14532d;
+}
+
+.box {
+    max-width: 480px;
+    background: white;
+    padding: 35px;
+    margin: 50px auto;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px #00000015;
+}
+
+.box h2 {
+    text-align: center;
+    color: #14532d;
+    margin-bottom: 25px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 90px;
+}
+
+.box button {
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.page {
+    min-height: 70vh;
+    padding-bottom: 40px;
+}
+
+.title {
+    text-align: center;
+    color: #14532d;
+    padding: 35px 10px;
+}
+
+#dashboard > h2 {
+    text-align: center;
+    color: #14532d;
+}
+
+.center {
+    text-align: center;
+    padding: 25px;
+}
+
+.table-container {
+    width: 96%;
+    margin: 25px auto;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th {
+    background: #14532d;
+    color: white;
+}
+
+td, th {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+footer {
+    background: #14532d;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    line-height: 1.8;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    color: #14532d;
+    font-weight: bold;
+}
+
+@media(max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+}
